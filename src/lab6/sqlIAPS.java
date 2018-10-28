@@ -15,7 +15,7 @@ public class sqlIAPS {
     Statement stmt;
 	
     /**
-	 *  Конструктор для начальной инициализации доступа к БД.
+	 *  РќР°С‡Р°Р»СЊРЅС‹Р№ РєР»Р°СЃСЃ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё 
 	 */
     
 	public sqlIAPS () {
@@ -24,15 +24,15 @@ public class sqlIAPS {
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		} catch (SQLException e) {
-			System.out.println ("Проблемы с доступом к бд?");
+			System.out.println ("РџСЂРѕР±Р»РµРјС‹ СЃ РґРѕСЃС‚СѓРїРѕРј Рє Р±Рґ?");
 			System.exit(0);
 		}
 	}
 	
 	/**
-	 *  Регистрация нового грешника
-	 *  @param Tormented с полями id, name, email, password
-	 *  @throws InvalidEmailException 
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ РіСЂРµС€РЅРёРєР°
+	 *  @param Tormented Р“СЂРµС€РЅРёРє
+	 *  @throws InvalidEmailException РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ РµСЃС‚СЊ 
 	 */
 	
 	void sqlInsertTorm (Tormented t) throws InvalidEmailException {
@@ -50,8 +50,8 @@ public class sqlIAPS {
 	}
 
 	/**
-	 *  Обновление информации о грешнике
-	 *  @param Tormented с полями id, name, email, password, district
+	 *  РћР±РЅРѕРІР»РµРЅРёРµ РіСЂРµС€РЅРёРєР°
+	 *  @param Tormented Р“СЂРµС€РЅРёРє
 	 */
 	
 	void sqlUpdateTorm (Tormented t) {
@@ -70,8 +70,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Получение информации о грешнике по email
-	 *  @param String email
+	 *  РџРѕРёСЃРє РіСЂРµС€РЅРёРєР° РїРѕ email
+	 *  @param String email РіСЂРµС€РЅРёРєР°
 	 *  @return Tormented
 	 */
 	
@@ -87,15 +87,14 @@ public class sqlIAPS {
 	        t.password=rs.getString(4);
 	        t.district=rs.getInt(5);
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return t;
 	}
 	
 	/**
-	 *  Получение информации о грешнике по ID
-	 *  @param int ID грешника
+	 *  РџРѕРёСЃРє РіСЂРµС€РЅРёРєР° РїРѕ ID
+	 *  @param int ID РіСЂРµС€РЅРёРєР°
 	 *  @return Tormented
 	 */
 	
@@ -111,16 +110,15 @@ public class sqlIAPS {
 	        t.password=rs.getString(4);
 	        t.district=rs.getInt(5);
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return t;
 	}
 	
 	/**
-	 *  Подача заявления на рассмотрение грехов
-	 *  @param Tormented грешник, подавший заявление
-	 *  @param String текст описания
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°СЏРІРєРё РЅР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРµ РіСЂРµС…РѕРІ
+	 *  @param Tormented Р“СЂРµС€РЅРёРє
+	 *  @param String РўРµРєСЃС‚ Р·Р°СЏРІРєРё
 	 */
 	
 	void sqlInsertSinAppl (Tormented t, String s) {
@@ -135,8 +133,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Вывод заявлений на рассмотрение
-	 *  @return ArrayList<Application> лист со списком заявлений
+	 *  РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° Р·Р°СЏРІРѕРє РЅР° РіСЂРµС…Рё
+	 *  @return ArrayList<Application> РњР°СЃСЃРёРІ Р·Р°СЏРІРѕРє
 	 */
 	
 	ArrayList<Application> sqlSelectSinAppl () {
@@ -152,16 +150,15 @@ public class sqlIAPS {
 				apps.add(app);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return apps;
 	}
 	
 	/**
-	 *  Приём на рассмотрение
-	 *  @param Application Заявка
-	 *  @param Watcher Надзиратель, взявший на расммотрение
+	 *  РќР°С‡Р°Р»Рѕ СЂР°СЃСЃРјРѕС‚СЂРµРЅРёСЏ Р·Р°СЏРІРєРё
+	 *  @param Application Р—Р°СЏРІРєР°
+	 *  @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ, РєРѕС‚РѕСЂС‹Р№ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµС‚
 	 */
 	
 	void sqlStartSinApp(Application app, Watcher watch) {
@@ -176,8 +173,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Остановка рассмотрения
-	 *  @param Application Заявка
+	 *  РџСЂРµСЂС‹РІР°РЅРёРµ СЂР°СЃСЃРјРѕС‚СЂРµРЅРёСЏ
+	 *  @param Application Р—Р°СЏРІРєР°
 	 */
 	
 	void sqlStopSinApp(Application app) {
@@ -192,9 +189,9 @@ public class sqlIAPS {
 	}
 			
 	/**
-	 *  Записывает информацию о грехах грешника
-	 *  @param Tormented t
-	 *  @param float[] sins
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ РіСЂРµС…РѕРІ РіСЂРµС€РЅРёРєСѓ
+	 *  @param Tormented Р“СЂС€РµРЅРёРє
+	 *  @param float[] РњР°СЃСЃРёРІ РіСЂРµС…РѕРІ
 	 */
 	
 	void sqlInsertTormSins (Tormented t, float[] sins) {
@@ -227,10 +224,10 @@ public class sqlIAPS {
 	}
 		
 	/**
-	 *  Получает информацию о грехе грешника
-	 *  @param Tormented t
-	 *  @param int idSin
-	 *  @return int[] int[0] - общее время, int[1] - выстраданное время
+	 *  Р’С‹Р±РѕСЂ СЃРєРѕР»СЊРєРѕ РІСЂРµРјРµРЅРё РіСЂРµС€РЅРёРєСѓ СЃС‚СЂР°РґР°С‚СЊ РїРѕ РѕРїСЂРµРґРµР»С‘РЅРЅРѕРјСѓ РіСЂРµС…Сѓ
+	 *  @param Tormented Р“СЂРµС€РЅРёРє
+	 *  @param int 
+	 *  @return int[] int[0] - РѕР±С‰РµРµ РІСЂРµРјСЏ, int[1] - РІС‹СЃС‚СЂР°РґР°РЅРЅРѕРµ РІСЂРµРјСЏ
 	 */
 	
 	int[] sqlSelectTormSins(Tormented t, int i) {
@@ -242,16 +239,15 @@ public class sqlIAPS {
 	        hours[0]=rs.getInt(3);
 	        hours[1]=rs.getInt(4);
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return hours;
 	}
 	
 	/**
-	 * Получает список ID надзирателей, подходящих грешнику
-	 * @param int[] Массив из 7 интов, каждый бит каждого является флагом, свободен ли грешник в это время
-	 * @return ArrayList<Integer> Лист из ид надзирателей
+	 * Р’С‹Р±РѕСЂ РїРѕРґС…РѕРґСЏС‰РёС… РїРѕ РІСЂРµРјРµРЅРё РіСЂРµС€РЅРёРєРѕРІ
+	 * @param int[] РњР°СЃСЃРёРІ РёР· 7 РёРЅС‚РѕРІ, РєР°Р¶РґС‹Р№ Р±РёС‚ РєР°Р¶РґРѕРіРѕ СЏРІР»СЏРµС‚СЃСЏ С„Р»Р°РіРѕРј, СЃРІРѕР±РѕРґРµРЅ Р»Рё РіСЂРµС€РЅРёРє РІ СЌС‚Рѕ РІСЂРµРјСЏ
+	 * @return ArrayList<Integer> РњР°СЃСЃРёРІ РЅР°РґР·РёСЂР°С‚РµР»РµР№
 	 */
 	
 	ArrayList<Integer> sqlSelectTime(int[] times) {
@@ -264,16 +260,15 @@ public class sqlIAPS {
 	        	watchers.add(rs.getInt(1));
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return watchers;
 	}
 	
 	/**
-	 *  Поиск района по id
-	 *  @param int ID района
-	 *  @return String Название района
+	 *  РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ СЂР°Р№РѕРЅР° РїРѕ id
+	 *  @param int ID 
+	 *  @return String РќР°Р·РІР°РЅРёРµ
 	 */
 	
 	String sqlSelectDistrictl (int id) {
@@ -285,15 +280,14 @@ public class sqlIAPS {
 				name=rs.getString(2);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return name;
 	}
 	
 	/**
-	 * Добавление нового надзирателя
-	 * @param Watcher Надзиратель
+	 * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РЅР°РґР·РёСЂР°С‚РµР»СЏ
+	 * @param Watcher РћРїРёСЃР°РЅРёРµ РЅР°РґР·РёСЂР°С‚РµР»СЏ
 	 * @throws InvalidEmailException 
 	 */
 	
@@ -312,8 +306,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Обновление информации о надзирателе
-	 *  @param Watcher Надзиратель
+	 *  РћР±РЅРѕРІР»РµРЅРёРµ РЅР°РґР·РёСЂР°С‚РµР»СЏ
+	 *  @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ
 	 */
 	
 	void sqlUpdateWatch (Watcher w) {
@@ -334,7 +328,7 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Получение информации о надзирателе по email
+	 *  РџРѕРёСЃРє РЅР°РґР·РёСЂР°С‚РµР»СЏ РїРѕ email
 	 *  @param String email
 	 *  @return Watcher
 	 */
@@ -353,15 +347,14 @@ public class sqlIAPS {
 	        w.evaluation=rs.getFloat(7);
 	        w.scores=rs.getInt(8);
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return w;
 	}
 	
 	/**
-	 *  Получение информации о надзирателе по ID
-	 *  @param int ID надзирателя
+	 *  РџРѕРёСЃРє РЅР°РґР·РёСЂР°С‚РµР»СЏ РїРѕ ID
+	 *  @param int ID РќР°РґР·РёСЂР°С‚РµР»СЊ
 	 *  @return Watcher
 	 */
 	
@@ -379,15 +372,14 @@ public class sqlIAPS {
 	        w.evaluation=rs.getFloat(7);
 	        w.scores=rs.getInt(8);
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return w;
 	}
 	
 	/**
-	 * Получение списка непринятых надзирателей
-	 * @return ArrayList<Watcher> Список надзирателей
+	 * РџРѕРёСЃРє РЅРµСЂР°Р±РѕС‚Р°СЋС‰РёС… РЅР°РґР·РёСЂР°С‚РµР»РµР№
+	 * @return ArrayList<Watcher> РњР°СЃСЃРёРІ РЅРµСЂР°Р±РѕС‚Р°СЋС‰РёС…
 	 */
 	
 	ArrayList<Watcher> sqlSelectUnEmployed () {
@@ -408,7 +400,6 @@ public class sqlIAPS {
 		        watchers.add(w);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return watchers;
@@ -416,9 +407,9 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Записывает информацию о профпригодности надзирателя
-	 *  @param Watcher Надзиратель
-	 *  @param int[] Массив описывающий, можно ли надзирателю работать над грехом	
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРѕС„РїСЂРёРіРѕРґРЅРѕСЃС‚Рё
+	 *  @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ
+	 *  @param int[] РњР°СЃСЃРёРІ (0 - РЅРµ РјРѕР¶РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ, >0 - РјРѕР¶РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ)	
 	 */
 	
 	void sqlInsertWatchSins (Watcher w, int[] sins) {
@@ -437,9 +428,9 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Подача заявления на ремонт
-	 *  @param Watcher надзиратель, подавший заявление
-	 *  @param String описание
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ Р·Р°СЏРІРєРё РЅР° СЂРµРјРѕРЅС‚
+	 *  @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ, РїРѕРґР°РІС€РёР№ Р·Р°СЏРІРєСѓ
+	 *  @param String РўРµРєСЃС‚ Р·Р°СЏРІРєРё
 	 */
 	
 	void sqlInsertRepairAppl (Watcher w, String s) {
@@ -454,8 +445,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Получение списка заявлений на ремонт для ремонтника
-	 *  @return ArrayList<Application> Список заявлений
+	 *  РћС‚РѕСЂР±Р°Р¶РµРЅРёРµ Р·Р°СЏРІРѕРє РґР»СЏ СЂРµРјРѕРЅС‚РЅРёРєР°
+	 *  @return ArrayList<Application> РЎРїРёСЃРѕРє Р·Р°СЏРІРѕРє
 	 */
 	
 	ArrayList<Application> sqlSelectRepairApplRepair () {
@@ -471,15 +462,14 @@ public class sqlIAPS {
 				apps.add(app);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return apps;
 	}
 	
 	/**
-	 *  Получение списка заявлений на ремонт для администратора
-	 *  @return ArrayList<Application> Список заявлений
+	 *  РћС‚РѕСЂР±Р°Р¶РµРЅРёРµ Р·Р°СЏРІРѕРє РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
+	 *  @return ArrayList<Application> РЎРїРёСЃРѕРє Р·Р°СЏРІРѕРє
 	 */
 	
 	ArrayList<Application> sqlSelectRepairApplAdmin () {
@@ -495,16 +485,15 @@ public class sqlIAPS {
 				apps.add(app);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return apps;
 	}
 	
 	/**
-	 *  Установка статуса починки
-	 *  @param Application Заявка
-	 *  @param int Статус (0 - не тронута, 1 - чинится, 2 - готово)
+	 *  РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃР° СЂРµРјРѕРЅС‚Р°
+	 *  @param Application Р—Р°СЏРІРєР°
+	 *  @param int РЎС‚Р°С‚СѓСЃ (0 - РЅРµ СЂР°СЃСЃРјРѕС‚СЂРµРЅР°, 1 - С‡РёРЅРёС‚СЃСЏ, 2 - РіРѕС‚РѕРІРѕ)
 	 */
 	
 	void sqlRepairRepairApp(Application app, int status) {
@@ -519,9 +508,9 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Установка флага оплаты
-	 *  @param Application Заявка
-	 *  @param int Статус (0 - не оплачено, 1 - оплачено)
+	 *  РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃР° РѕРїР»Р°С‚С‹
+	 *  @param Application Р—Р°СЏРІРєР°
+	 *  @param int пїЅ РЎС‚Р°С‚СѓСЃ (0 - РЅРµ РѕРїР»Р°С‡РµРЅРѕ, 1 - РѕРїР»Р°С‡РµРЅРѕ)
 	 */
 	
 	void sqlSPaymentRepairApp(Application app, int status) {
@@ -536,9 +525,9 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Занесение времени надзирателя
-	 *  @param Watcher Надзиратель
-	 *  @param int[] Массив из 7 интов, каждый бит каждого является флагом, свободен ли надзиратель в это время
+	 *  РЈСЃС‚Р°РЅРѕРІРєР° СЃРІРѕР±РѕРґРЅРѕРіРѕ РІСЂРµРјРµРЅРё РґР»СЏ РЅР°РґР·РёСЂР°С‚РµР»СЏ
+	 *  @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ
+	 *  @param int[] РњР°СЃСЃРёРІ РёР· 7 РёРЅС‚РѕРІ, РєР°Р¶РґС‹Р№ Р±РёС‚ РєР°Р¶РґРѕРіРѕ СЏРІР»СЏРµС‚СЃСЏ С„Р»Р°РіРѕРј, СЃРІРѕР±РѕРґРµРЅ Р»Рё РіСЂРµС€РЅРёРє РІ СЌС‚Рѕ РІСЂРµРјСЏ
 	 */
 	
 	void sqlInsertTime (Watcher w, int[] times) {
@@ -559,8 +548,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 *  Запись о новой сессии страдания
-	 *  @param Session Класс, описывающий сессию
+	 *  Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ СЃРµСЃСЃРёРё
+	 *  @param Session РћРїРёСЃР°РЅРёРµ СЃРµСЃСЃРёРё
 	 */
 	
 	void sqlInsertSession(Session s) {
@@ -579,9 +568,9 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 * Получение списка будущих сессий для надзирателя
-	 * @param Watcher надзиратель
-	 * @return ArrayList<Session> список сессий
+	 * Р’С‹Р±РѕСЂ СЃРµСЃСЃРёР№ РїРѕ РЅР°РґР·РёСЂР°С‚РµР»СЋ
+	 * @param Watcher РќР°РґР·РёСЂР°С‚РµР»СЊ
+	 * @return ArrayList<Session> РњР°СЃСЃРёРІ СЃРµСЃСЃРёР№
 	 */
 	
 	ArrayList<Session> sqlSelectSession (Watcher w) {
@@ -600,16 +589,15 @@ public class sqlIAPS {
 				sessions.add(s);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return sessions;
 	}
 	
 	/**
-	 * Получение списка будущих сессий для грешника
-	 * @param Tormented 
-	 * @return ArrayList<Session> список сессий
+	 * Р’С‹Р±РѕСЂ СЃРµСЃСЃРёР№ РїРѕ РіСЂРµС€РЅРєСѓ
+	 * @param Watcher Р“СЂРµС€РЅРёРє
+	 * @return ArrayList<Session> РњР°СЃСЃРёРІ СЃРµСЃСЃРёР№
 	 */
 	
 	ArrayList<Session> sqlSelectSession (Tormented t) {
@@ -628,15 +616,14 @@ public class sqlIAPS {
 				sessions.add(s);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return sessions;
 	}
 	
 	/**
-	 * Отмена сессии. В поле approved выставляется -1.
-	 * @param Session Сессия
+	 * РћС‚РјРµРЅР° СЃРµСЃСЃРёР№. Р’ РїРѕР»Рµ approved СЃС‚Р°РІРёС‚СЃСЏ -1.
+	 * @param Session РЎРµСЃСЃРёСЏ
 	 */
 	
 	void sqlDeclineSession(Session s) {
@@ -651,8 +638,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 * Подтверждение сессии. В поле approved выставляется 1.
-	 * @param Session Сессия
+	 * РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СЃРµСЃСЃРёРё. Р’ РїРѕР»Рµ approved СЃС‚Р°РІРёС‚СЃСЏ 1.
+	 * @param Session РЎРµСЃСЃРёСЏ
 	 */
 	
 	void sqlApproveSession(Session s) {
@@ -667,8 +654,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 * Оценивание сессии.
-	 * @param Session Сессия
+	 * РћС†РµРЅРєР° СЃРµСЃСЃРёРё
+	 * @param Session РЎРµСЃСЃРёСЏ
 	 */
 	
 	void sqlEvaluateSession(Session s) {
@@ -695,8 +682,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 * Добавление нового запроса в техподдержку
-	 * @param String Описание проблемы
+	 * Р—Р°РїСЂРѕСЃ РІ С‚РµС…РїРѕРґРґРµСЂР¶РєСѓ
+	 * @param String РўРµРєСЃС‚ Р·Р°РїСЂРѕСЃР°
 	 */
 	
 	void sqlInsertTechSupport(String s) {
@@ -711,9 +698,8 @@ public class sqlIAPS {
 	}
 	
 	/**
-	 * Получение списка запросов в техподдержку
-	 * @return 
-	 * @return ArrayList<Application> Массив запросов
+	 * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° Р·Р°РїСЂРѕСЃРѕРІ РІ С‚РµС…РїРѕРґРґРµСЂР¶РєСѓ
+	 * @return ArrayList<Application> РњР°СЃСЃРёРІ Р·Р°РїСЂРѕСЃРѕРІ
 	 */
 	
 	ArrayList<Application> sqlSelectTechSupport() {
@@ -728,16 +714,15 @@ public class sqlIAPS {
 				supp.add(a);
 	        }
 		} catch (SQLException e) {
-			System.out.println("Проблемы с доступом к базе данных.");
 			e.printStackTrace();
 		}
 		return supp;
 	}
 	
 	/**
-	 * Изменение статуса запроса в техподдержку
-	 * @param Application Запрос, статус которого надо изменить
-	 * @param int Статус (0 - не расмотрено, 1 - рассматривается, 2 - готово)
+	 * РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃР° Р·Р°РїСЂРѕСЃР° РІ С‚РµС…РїРѕРґРґРµСЂР¶РєСѓ
+	 * @param Application Р—Р°РїСЂРѕСЃ, СЃС‚Р°С‚СѓСЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°РґРѕ РјРµРЅСЏС‚СЊ
+	 * @param int пїЅпїЅпїЅпїЅпїЅпїЅ (0 - РЅРµ СЂР°СЃСЃРјРѕС‚СЂРµРЅ, 1 - СЂР°СЃРјР°С‚СЂРёРІР°РµС‚СЃСЏ, 2 - РіРѕС‚РѕРІРѕ)
 	 */
 	
 	void sqlUpdateTechSupport(Application supp, int s) {
@@ -756,7 +741,6 @@ public class sqlIAPS {
 			stmt.close();
 			c.commit();
 		} catch (SQLException e) {
-			System.out.println("Ошибка при закрытии связи с БД!");
 			e.printStackTrace();
 		}
 	}
